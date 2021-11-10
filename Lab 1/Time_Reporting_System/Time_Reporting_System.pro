@@ -10,12 +10,14 @@ CONFIG += c++11
 
 SOURCES += \
     entrydialog.cpp \
+    jsons.cpp \
     main.cpp \
     mainwindow.cpp \
     menudialog.cpp
 
 HEADERS += \
     entrydialog.h \
+    jsons.h \
     mainwindow.h \
     menudialog.h
 

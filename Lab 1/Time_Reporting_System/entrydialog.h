@@ -15,6 +15,8 @@ public:
     explicit EntryDialog(QWidget *parent = nullptr);
     ~EntryDialog();
 
+    void LoadActivity();//TO DO
+
 private:
     Ui::EntryDialog *ui;
 };

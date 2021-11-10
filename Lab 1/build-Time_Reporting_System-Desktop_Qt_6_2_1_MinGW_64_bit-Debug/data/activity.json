@@ -1,0 +1,19 @@
+{
+    "activities": [
+        {
+            "active": false,
+            "budget": 16,
+            "code": "Test code",
+            "manager": "",
+            "name": "",
+            "subactivities": [
+                {
+                    "code": "CODE-1"
+                },
+                {
+                    "code": "CODE-X"
+                }
+            ]
+        }
+    ]
+}
