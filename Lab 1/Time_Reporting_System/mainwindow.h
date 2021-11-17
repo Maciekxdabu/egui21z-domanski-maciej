@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <QStandardItemModel>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,10 +17,24 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void PublicUpdateData();
+
 private slots:
-    void on_pushButton_clicked();
+    //for buttons
+    void OpenProjectManagementDialog();
+    void OpenMonthlyReportDialog();
+
+    void AddEntryButton();
+    void EditEntryButton();
+    void DeleteEntryButton();
+    void UpdateDisplayedData();
+
+    void SetDate();
 
 private:
     Ui::MainWindow *ui;
+    QStandardItemModel *entriesModel;
+
+    QVector<int> localToGlobalIndexes;
 };
 #endif // MAINWINDOW_H

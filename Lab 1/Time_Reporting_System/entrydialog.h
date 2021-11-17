@@ -1,6 +1,8 @@
 #ifndef ENTRYDIALOG_H
 #define ENTRYDIALOG_H
 
+#include "jsons.h"
+
 #include <QDialog>
 
 namespace Ui {
@@ -15,10 +17,14 @@ public:
     explicit EntryDialog(QWidget *parent = nullptr);
     ~EntryDialog();
 
-    void LoadActivity();//TO DO
+    void LoadEntry(Report::Entry &newEntry);//loads Entry from Dialog
+    void PushEntry(Report::Entry &pushEntry);//loads Entry to Dialog
 
 private:
     Ui::EntryDialog *ui;
+
+    void Initialize();
+    void RefreshSubcategories();
 };
 
 #endif // ENTRYDIALOG_H

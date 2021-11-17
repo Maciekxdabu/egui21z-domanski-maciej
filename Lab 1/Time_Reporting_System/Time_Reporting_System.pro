@@ -13,18 +13,24 @@ SOURCES += \
     jsons.cpp \
     main.cpp \
     mainwindow.cpp \
-    menudialog.cpp
+    managedprojectsdialog.cpp \
+    monthreportdialog.cpp \
+    newprojectdialog.cpp
 
 HEADERS += \
     entrydialog.h \
     jsons.h \
     mainwindow.h \
-    menudialog.h
+    managedprojectsdialog.h \
+    monthreportdialog.h \
+    newprojectdialog.h
 
 FORMS += \
     entrydialog.ui \
     mainwindow.ui \
-    menudialog.ui
+    managedprojectsdialog.ui \
+    monthreportdialog.ui \
+    newprojectdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

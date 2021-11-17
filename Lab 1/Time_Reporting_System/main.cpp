@@ -2,51 +2,72 @@
 #include "jsons.h"
 
 #include <QApplication>
-#include <QFile>
+#include <QInputDialog>
+#include <QDir>
 
-#include <QJsonDocument>
+//static variables declared in json.h for global access (in all Dialogs)
+Activities actObject;
 
-Activities activities;
-QVector<Report> reports;
+//functions declarations
+bool LoadConfig();
 
-bool SaveData();
-bool LoadData();
+// ---------- main function
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     MainWindow w;
     w.show();
 
-    //activities save test
-    Activities::Activity newAct;
-    newAct.code = "Test code";
-    newAct.subactivities.append("CODE-1");
-    newAct.subactivities.append("CODE-X");
-    activities.activities.append(newAct);
+    if (!LoadConfig())//TO DO - implement config
+    {
+        //TO DO - ask user for datapath
+    }
+
+    LoadData();
+
+    bool acceptedInput = false;
+    while (!acceptedInput || USER.isEmpty())
+    {
+        USER = QInputDialog::getText(w.menuWidget(), "Enter username",
+                                     "User name:", QLineEdit::Normal,
+                                     QDir::home().dirName(), &acceptedInput);
+    }
+    w.PublicUpdateData();
+
+    int returnCode = a.exec();
+
     SaveData();
 
-    return a.exec();
+    return returnCode;
+}
+
+// ---------- Functions (declarations above main)
+
+bool LoadConfig()
+{
+    //TO DO
+    //-loading config file
+    //  -data folder path
+
+    return true;
 }
 
 bool SaveData()
 {
-    QFile saveFile(QStringLiteral("data/activity.json"));//TO DO - delete data folder (or make sure program creates it when not presented)
+    actObject.writeJson();
 
-    if (!saveFile.open(QIODevice::WriteOnly))
-    {
-        qWarning("Couldn't open activities file.");
-        return false;
-    }
-
-    QJsonObject actObject;
-    activities.writeJson(actObject);
-    saveFile.write(QJsonDocument(actObject).toJson());
+    Reports::writeJson();
 
     return true;
 }
 
 bool LoadData()
 {
+    actObject.readJson();
 
+    Reports::readJson();
+
+    return true;
 }

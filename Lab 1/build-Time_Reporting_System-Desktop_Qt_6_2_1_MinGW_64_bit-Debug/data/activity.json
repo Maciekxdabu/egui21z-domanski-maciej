@@ -1,17 +1,56 @@
 {
     "activities": [
         {
-            "active": false,
-            "budget": 16,
-            "code": "Test code",
-            "manager": "",
-            "name": "",
+            "active": true,
+            "budget": 77,
+            "code": "NP",
+            "manager": "macie",
+            "name": "New Project",
             "subactivities": [
                 {
-                    "code": "CODE-1"
+                    "code": "programming"
                 },
                 {
-                    "code": "CODE-X"
+                    "code": "graphical design"
+                }
+            ]
+        },
+        {
+            "active": true,
+            "budget": 200,
+            "code": "Sub-1",
+            "manager": "macie",
+            "name": "Subservice",
+            "subactivities": [
+                {
+                    "code": "serski"
+                },
+                {
+                    "code": "sasaski"
+                }
+            ]
+        },
+        {
+            "active": true,
+            "budget": 777,
+            "code": "hello",
+            "manager": "macie",
+            "name": "hi",
+            "subactivities": [
+            ]
+        },
+        {
+            "active": true,
+            "budget": 86,
+            "code": "NP-2",
+            "manager": "macie",
+            "name": "New Project 2",
+            "subactivities": [
+                {
+                    "code": "sub1"
+                },
+                {
+                    "code": "sub2"
                 }
             ]
         }
