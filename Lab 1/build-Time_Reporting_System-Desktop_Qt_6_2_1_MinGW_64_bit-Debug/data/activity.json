@@ -2,55 +2,46 @@
     "activities": [
         {
             "active": true,
-            "budget": 77,
-            "code": "NP",
-            "manager": "macie",
-            "name": "New Project",
+            "budget": 800,
+            "code": "db",
+            "manager": "jan",
+            "name": "Database",
             "subactivities": [
                 {
                     "code": "programming"
                 },
                 {
-                    "code": "graphical design"
+                    "code": "servers"
+                }
+            ]
+        },
+        {
+            "active": true,
+            "budget": 500,
+            "code": "dm",
+            "manager": "kowal",
+            "name": "Data Mining",
+            "subactivities": [
+                {
+                    "code": "mining"
+                },
+                {
+                    "code": "building"
                 }
             ]
         },
         {
             "active": false,
-            "budget": 200,
-            "code": "Sub-1",
-            "manager": "macie",
-            "name": "Subservice",
+            "budget": -20,
+            "code": "bm",
+            "manager": "kowal",
+            "name": "Basement",
             "subactivities": [
                 {
-                    "code": "serski"
+                    "code": "drawing"
                 },
                 {
-                    "code": "sasaski"
-                }
-            ]
-        },
-        {
-            "active": true,
-            "budget": 777,
-            "code": "hello",
-            "manager": "macie",
-            "name": "hi",
-            "subactivities": [
-            ]
-        },
-        {
-            "active": true,
-            "budget": 86,
-            "code": "NP-2",
-            "manager": "macie",
-            "name": "New Project 2",
-            "subactivities": [
-                {
-                    "code": "sub1"
-                },
-                {
-                    "code": "sub2"
+                    "code": "building"
                 }
             ]
         }

@@ -1,0 +1,54 @@
+{
+    "accepted": [
+        {
+            "code": "bm",
+            "time": 10
+        },
+        {
+            "code": "db",
+            "time": 120
+        },
+        {
+            "code": "dm",
+            "time": 90
+        }
+    ],
+    "entries": [
+        {
+            "code": "db",
+            "date": "2021-11-1",
+            "description": "coffee",
+            "subcode": "",
+            "time": 60
+        },
+        {
+            "code": "dm",
+            "date": "2021-11-1",
+            "description": "preparing",
+            "subcode": "building",
+            "time": 30
+        },
+        {
+            "code": "bm",
+            "date": "2021-11-8",
+            "description": "sketching",
+            "subcode": "drawing",
+            "time": 10
+        },
+        {
+            "code": "db",
+            "date": "2021-11-8",
+            "description": "setup servers",
+            "subcode": "servers",
+            "time": 30
+        },
+        {
+            "code": "dm",
+            "date": "2021-11-8",
+            "description": "",
+            "subcode": "building",
+            "time": 60
+        }
+    ],
+    "frozen": true
+}

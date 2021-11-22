@@ -162,26 +162,28 @@ Report::Report(QString fName)//IMP: Must have .json file in attribute
     tempFileName.remove(".json");
 
     QStringList strings = tempFileName.split("-", Qt::SkipEmptyParts);
-    if (strings.size() != 3)
+    if (strings.size() < 3)
     {
         qWarning("Json file found in data folder is not a proper format for a report");
         return;
     }
     bool ok;
-    int newYear = strings[1].toInt(&ok);
+    int newYear = strings[strings.size() - 2].toInt(&ok);
     if (!ok)
     {
         qWarning("Json file found in data folder is not a proper format for a report");
         return;
     }
-    int newMonth = strings[2].toInt(&ok);
+    int newMonth = strings[strings.size() - 1].toInt(&ok);
     if (!ok)
     {
         qWarning("Json file found in data folder is not a proper format for a report");
         return;
     }
 
-    userName = strings[0];
+    userName = tempFileName;
+    userName.remove("-" + strings[strings.size() - 1]);
+    userName.remove("-" + strings[strings.size() - 2]);
     yearMonth.setDate(newYear, newMonth, 1);
 
     readJson();
@@ -232,7 +234,6 @@ bool Report::readJson()
 
     QJsonObject json = loadDoc.object();
 
-    //TO DO - read json
     if (json.contains("frozen") && json["frozen"].isBool())
         frozen = json["frozen"].toBool();
 
@@ -329,7 +330,6 @@ bool Report::writeJson() const
     {
         QJsonObject newAccept;
 
-        //TO DO - accepted vector
         newAccept["code"] = acceptKeys[i];
         newAccept["time"] = accepted[acceptKeys[i]];
 
@@ -397,7 +397,6 @@ void Reports::AddEntry(Report::Entry newEntry)
 
 bool Reports::readJson()
 {
-    //TO DO - create using fileName Report constructor
     QString datapath = DATAPATH;
     datapath.remove(datapath.size() - 1, 1);
     QDir directory(datapath);

@@ -50,7 +50,7 @@ void MonthReportDialog::UpdateTable()
     QList<QString> keys = projectsTimes.keys();
     for (int i=0; i<keys.size(); i++)
     {
-        QStandardItem *item1 = new QStandardItem(keys[i]);//TO DO - displaye project name not code
+        QStandardItem *item1 = new QStandardItem(Activities::GetActivity(keys[i])->name + " (" + keys[i] + ")");
         tableModel->setItem(i, 0, item1);
         QStandardItem *item2 = new QStandardItem(QString::number(projectsTimes[keys[i]]));
         tableModel->setItem(i, 1, item2);
@@ -58,11 +58,14 @@ void MonthReportDialog::UpdateTable()
 
     tableModel->setHeaderData(0, Qt::Horizontal, "Project");
     tableModel->setHeaderData(1, Qt::Horizontal, "Time Spent");
+
+    ui->timeTable->resizeColumnsToContents();
 }
 
 void MonthReportDialog::SubmitReport()
 {
     QMessageBox messBox;
+    messBox.setWindowTitle("Submit report?");
     messBox.setText("Are you sure you want to submit current month's report?\n");
     messBox.setInformativeText("You will not be able to add or edit any entries for this month afterwards");
     messBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);

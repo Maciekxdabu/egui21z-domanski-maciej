@@ -34,6 +34,10 @@ private:
 
     QStandardItemModel *model;
     QStandardItemModel *reportsModel;
+
+    QVector<Activities::Activity*> projects;
+    QVector<Report*> tableReports;
+    int timeSum;
 };
 
 #endif // MANAGEDPROJECTSDIALOG_H

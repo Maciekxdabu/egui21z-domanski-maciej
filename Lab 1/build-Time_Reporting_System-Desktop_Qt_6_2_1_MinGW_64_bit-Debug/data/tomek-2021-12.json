@@ -1,0 +1,40 @@
+{
+    "accepted": [
+        {
+            "code": "bm",
+            "time": 90
+        },
+        {
+            "code": "db",
+            "time": 90
+        },
+        {
+            "code": "dm",
+            "time": 120
+        }
+    ],
+    "entries": [
+        {
+            "code": "db",
+            "date": "2021-12-6",
+            "description": "",
+            "subcode": "servers",
+            "time": 60
+        },
+        {
+            "code": "dm",
+            "date": "2021-12-6",
+            "description": "",
+            "subcode": "mining",
+            "time": 120
+        },
+        {
+            "code": "bm",
+            "date": "2021-12-6",
+            "description": "",
+            "subcode": "",
+            "time": 60
+        }
+    ],
+    "frozen": true
+}

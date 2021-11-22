@@ -1,0 +1,21 @@
+{
+    "accepted": [
+    ],
+    "entries": [
+        {
+            "code": "db",
+            "date": "2021-12-6",
+            "description": "",
+            "subcode": "servers",
+            "time": 90
+        },
+        {
+            "code": "dm",
+            "date": "2021-12-6",
+            "description": "",
+            "subcode": "",
+            "time": 30
+        }
+    ],
+    "frozen": false
+}

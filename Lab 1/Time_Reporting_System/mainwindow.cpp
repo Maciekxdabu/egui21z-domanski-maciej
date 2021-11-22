@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->addEntButton, &QPushButton::clicked, this, &MainWindow::AddEntryButton);
     connect(ui->editEntButton, &QPushButton::clicked, this, &MainWindow::EditEntryButton);
     connect(ui->deleteEntButton, &QPushButton::clicked, this, &MainWindow::DeleteEntryButton);
-    //connect(this, &MainWindow::closeEvent, this, &MainWindow::OpenProjectManagementDialog);
 
     //other (updates)
     connect(ui->dateEdit, &QDateEdit::dateChanged, this, &MainWindow::SetDate);
@@ -86,8 +85,20 @@ void MainWindow::EditEntryButton()
     if (index < 0)
         return;
 
+    if (Activities::GetActivity( MAINREP->entries[localToGlobalIndexes[index]].code )->active == false)
+    {
+        QMessageBox messBox;
+        messBox.setWindowTitle("ProjectClosed");
+        messBox.setText("You cannot edit this entry, because the project for it is already closed");
+        messBox.setStandardButtons(QMessageBox::Ok);
+        messBox.exec();
+
+        return;
+    }
+
     EntryDialog *entryDialog = new EntryDialog();
     entryDialog->PushEntry(MAINREP->entries[localToGlobalIndexes[index]]);
+
     QDialog::DialogCode exitCode = (QDialog::DialogCode)entryDialog->exec();
 
     if (exitCode == QDialog::DialogCode::Accepted)
@@ -107,6 +118,28 @@ void MainWindow::DeleteEntryButton()
     int index = ui->actTable->currentIndex().row();
     if (index < 0)
         return;
+
+    QMessageBox messBox;
+    messBox.setWindowTitle("Delete?");
+    messBox.setText("Are you sure you want to delete this entry?");
+    messBox.setInformativeText("This action cannot be reverted");
+    messBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    messBox.setDefaultButton(QMessageBox::No);
+    int ret = messBox.exec();
+
+    if (ret != QMessageBox::Yes)
+        return;
+
+    if (Activities::GetActivity( MAINREP->entries[localToGlobalIndexes[index]].code )->active == false)
+    {
+        QMessageBox messBox;
+        messBox.setWindowTitle("Delete?");
+        messBox.setText("You cannot delete this entry, because the project for it is already closed");
+        messBox.setStandardButtons(QMessageBox::Ok);
+        messBox.exec();
+
+        return;
+    }
 
     MAINREP->entries.removeAt(localToGlobalIndexes[index]);
 
@@ -140,7 +173,7 @@ void MainWindow::UpdateDisplayedData()
         localToGlobalIndexes.append(i);
         timeSum += MAINREP->entries[i].time;
 
-        QStandardItem *newItem = new QStandardItem(MAINREP->entries[i].code);//TO DO - use project name instead of code
+        QStandardItem *newItem = new QStandardItem(Activities::GetActivity(MAINREP->entries[i].code)->name + " (" + MAINREP->entries[i].code + ")");
         entriesModel->setItem(i - gapFixer, 0, newItem);
         newItem = new QStandardItem(MAINREP->entries[i].subcode);
         entriesModel->setItem(i - gapFixer, 1, newItem);
@@ -155,6 +188,8 @@ void MainWindow::UpdateDisplayedData()
     entriesModel->setHeaderData(1, Qt::Horizontal, "Subcode");
     entriesModel->setHeaderData(2, Qt::Horizontal, "Time");
     entriesModel->setHeaderData(3, Qt::Horizontal, "Description");
+
+    ui->actTable->resizeColumnsToContents();
 
     ui->timeSpentLabel->setText("Time spent on activities: " + QString::number(timeSum));
 
