@@ -95,6 +95,9 @@
       <height>271</height>
      </rect>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
     <property name="selectionMode">
      <enum>QAbstractItemView::SingleSelection</enum>
     </property>
@@ -118,7 +121,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Activities:</string>
+     <string>Entries:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">

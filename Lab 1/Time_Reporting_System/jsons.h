@@ -41,6 +41,7 @@ public:
     bool writeJson() const;
 
     static int GetActiveProjectIndex(int activeIndex);//returns an active project of the given number
+    static Activity* GetActivity(QString aCode);
 
         //variables
     static QVector<Activity> activities;
@@ -69,6 +70,9 @@ public:
 
     bool readJson();
     bool writeJson() const;
+
+    QString GetUsername();
+    QDate GetDate();
 
         //variables
     bool frozen;

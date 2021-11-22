@@ -1,7 +1,36 @@
 {
     "accepted": [
+        {
+            "code": "NP",
+            "time": 40
+        },
+        {
+            "code": "Sub-1",
+            "time": 33
+        }
     ],
     "entries": [
+        {
+            "code": "NP",
+            "date": "2021-11-8",
+            "description": "coffee",
+            "subcode": "programming",
+            "time": 30
+        },
+        {
+            "code": "Sub-1",
+            "date": "2021-11-8",
+            "description": "",
+            "subcode": "serski",
+            "time": 33
+        },
+        {
+            "code": "NP",
+            "date": "2021-11-8",
+            "description": "coffee 2",
+            "subcode": "graphical design",
+            "time": 10
+        }
     ],
-    "frozen": false
+    "frozen": true
 }

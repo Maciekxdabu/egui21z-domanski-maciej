@@ -16,7 +16,7 @@
             ]
         },
         {
-            "active": true,
+            "active": false,
             "budget": 200,
             "code": "Sub-1",
             "manager": "macie",

@@ -22,8 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->deleteEntButton, &QPushButton::clicked, this, &MainWindow::DeleteEntryButton);
     //connect(this, &MainWindow::closeEvent, this, &MainWindow::OpenProjectManagementDialog);
 
-    //other
+    //other (updates)
     connect(ui->dateEdit, &QDateEdit::dateChanged, this, &MainWindow::SetDate);
+    connect(ui->actTable, &QTableView::clicked, this, &MainWindow::UpdateInteractivity);
 
     SetDate();
 }
@@ -49,6 +50,8 @@ void MainWindow::OpenMonthlyReportDialog()
     MonthReportDialog *monthDialog = new MonthReportDialog();
     monthDialog->exec();
     delete monthDialog;
+
+    UpdateDisplayedData();
 }
 
 void MainWindow::OpenProjectManagementDialog()
@@ -56,6 +59,8 @@ void MainWindow::OpenProjectManagementDialog()
     ManagedProjectsDialog *projectsDialog = new ManagedProjectsDialog();
     projectsDialog->exec();
     delete projectsDialog;
+
+    UpdateDisplayedData();
 }
 
 void MainWindow::AddEntryButton()
@@ -118,6 +123,7 @@ void MainWindow::UpdateDisplayedData()
     if (MAINREP == nullptr)
     {
         ui->timeSpentLabel->setText("Time spent on activities: 0");
+        UpdateInteractivity();
         return;
     }
 
@@ -151,6 +157,35 @@ void MainWindow::UpdateDisplayedData()
     entriesModel->setHeaderData(3, Qt::Horizontal, "Description");
 
     ui->timeSpentLabel->setText("Time spent on activities: " + QString::number(timeSum));
+
+    UpdateInteractivity();
+}
+
+void MainWindow::UpdateInteractivity()
+{
+    Reports::ReloadCurrentReport(false);
+
+    if (MAINREP == nullptr || MAINREP->frozen == false)
+    {
+        ui->addEntButton->setDisabled(false);
+
+        if (ui->actTable->currentIndex().row() >= 0)
+        {
+            ui->editEntButton->setDisabled(false);
+            ui->deleteEntButton->setDisabled(false);
+        }
+        else
+        {
+            ui->editEntButton->setDisabled(true);
+            ui->deleteEntButton->setDisabled(true);
+        }
+    }
+    else
+    {
+        ui->addEntButton->setDisabled(true);
+        ui->editEntButton->setDisabled(true);
+        ui->deleteEntButton->setDisabled(true);
+    }
 }
 
 void MainWindow::SetDate()

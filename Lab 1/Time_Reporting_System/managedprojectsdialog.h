@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QStandardItemModel>
+#include <QMessageBox>
 
 #include "jsons.h"
 
@@ -22,11 +23,17 @@ public:
 
 private slots:
     void OpenCreateNewDialog();
+    void UpdateSelectedProject();
+    void EditSubmittedReport();
+    void CloseProject();
+
+    void UpdateUI();
 
 private:
     Ui::ManagedProjectsDialog *ui;
 
     QStandardItemModel *model;
+    QStandardItemModel *reportsModel;
 };
 
 #endif // MANAGEDPROJECTSDIALOG_H

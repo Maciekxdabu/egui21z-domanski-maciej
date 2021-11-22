@@ -141,6 +141,17 @@ int Activities::GetActiveProjectIndex(int activeIndex)
     return -1;
 }
 
+Activities::Activity* Activities::GetActivity(QString aCode)
+{
+    for (int i=0; i<activities.size(); i++)
+    {
+        if (activities[i].code == aCode)
+            return &activities[i];
+    }
+
+    return nullptr;
+}
+
 // ---------- Reports class
 
 Report::Report(QString fName)//IMP: Must have .json file in attribute
@@ -331,6 +342,16 @@ bool Report::writeJson() const
     saveFile.write(QJsonDocument(jsonFile).toJson());
 
     return true;
+}
+
+QString Report::GetUsername()
+{
+    return userName;
+}
+
+QDate Report::GetDate()
+{
+    return yearMonth;
 }
 
 // ---------- Reports class

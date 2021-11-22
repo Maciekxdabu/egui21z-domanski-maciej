@@ -17,7 +17,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void PublicUpdateData();
+    void PublicUpdateData();//called from main after username is inputed
 
 private slots:
     //for buttons
@@ -28,6 +28,8 @@ private slots:
     void EditEntryButton();
     void DeleteEntryButton();
     void UpdateDisplayedData();
+
+    void UpdateInteractivity();
 
     void SetDate();
 
