@@ -1,4 +1,4 @@
-@model trs.Models.EntryModel
+@model trs.Models.EntryViewModel
 @{
     ViewData["Title"] = "Entry Dialog";
 }
@@ -8,21 +8,21 @@
 <form>
     <div>
     <label>Project: </label>
-    @*Html.DropDownListFor()*@
-        <select class="form-control">
+    @Html.DropDownListFor(Model=>Model.entry.code, Model.projectCodes)
+        <!--<select class="form-control">
             <option>Project A</option>
             <option>Project B</option>
-        </select>
+        </select>-->
     </div>
     <div>
-        Time: <input type="number" min="1" class="form-control" value="0" asp-for="time" required></input>
+        Time: <input type="number" min="1" class="form-control" value="0" asp-for="entry.time" required></input>
     </div>
     <div>
         Description:
         <!--<div></div>-->
-        <textarea rows="5" cols="50" placeholder="Type description if needed" value="" asp-for="description" class="form-control"></textarea>
+        <textarea rows="5" cols="50" placeholder="Type description if needed" value="" asp-for="entry.description" class="form-control"></textarea>
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" asp-action="Submit">Submit</button>
     </div>
 </form>

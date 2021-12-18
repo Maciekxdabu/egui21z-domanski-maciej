@@ -8,15 +8,19 @@ namespace trs.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            EntryViewModel newModel = new EntryViewModel();
+
+            newModel.entry = new EntryModel();
+            newModel.projectCodes = ActivityModel.GetCodesList();
+
+            return View(newModel);
         }
 
-        [HttpPost]
-        public IActionResult Index(EntryModel entry)
+        public IActionResult Submit(EntryViewModel model)
         {
-            System.Diagnostics.Debug.WriteLine("time: " + entry.time + " description: " + entry.description);
+            System.Diagnostics.Debug.WriteLine("code: " + model.entry.code + " time: " + model.entry.time + " description: " + model.entry.description);
 
-            return View();
+            return View("Index", model);
         }
     }
 }

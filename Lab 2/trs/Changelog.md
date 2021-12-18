@@ -1,3 +1,6 @@
+Version 0.1.4
+- Updated Entry View so it now displays approporiate project names (approporiate project code is sent when submitted)
+
 Version 0.1.3
 - Added ActivityModel
 - Written static functions to read and save activity data from json file (latter only used in development)
