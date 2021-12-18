@@ -17,6 +17,27 @@ public class HomeController : Controller
     {
         //TO DO - check if first entry and if YES: ask for login
         
+        /*IList<ActivityModel> newList = new List<ActivityModel>();
+
+        ActivityModel newAct = new ActivityModel();
+        newAct.code = "Dev-1";
+        newAct.manager = "jan";
+        newAct.name = "Development";
+        newAct.budget = 200;
+        newList.Add(newAct);
+        newAct = new ActivityModel();
+        newAct.code = "DT-2";
+        newAct.manager = "kowal";
+        newAct.name = "Data Mining";
+        newAct.budget = 300;
+        newList.Add(newAct);
+
+        ActivityModel.SaveActivityList(newList);*/
+
+        IList<ActivityModel> aktList = ActivityModel.GetActivityList();
+
+        System.Diagnostics.Debug.WriteLine(aktList[0].code + "\n" + aktList[1].code);
+
         return View();
     }
 

@@ -1,3 +1,7 @@
+Version 0.1.3
+- Added ActivityModel
+- Written static functions to read and save activity data from json file (latter only used in development)
+
 Version 0.1.2
 - Added Changelog and updated information about last commit
 - Updated Views:
