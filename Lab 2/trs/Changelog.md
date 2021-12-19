@@ -1,3 +1,7 @@
+Version 0.3.3
+- Fix: Cancel button in Entry Dialog now properly returns to Main Page
+- Finished input for selecting date
+
 Version 0.3.2
 - Deleted LectureModel created in Lecture MVC tutorial
 - Changed Home/Index to be login View and moved Activities table to Home/Activities

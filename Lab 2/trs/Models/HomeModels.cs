@@ -9,8 +9,7 @@ public class HIndexModel
 
 public class HActivitiesModel
 {
-    [DataType(DataType.Date)]
-    public DateTime date { get; set; }
+    public string date { get; set; }
     public List<EntryTableModel> entries { get; set; }
     public int totalTime { get; set; }
 }

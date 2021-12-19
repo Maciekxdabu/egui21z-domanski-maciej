@@ -3,12 +3,14 @@
     ViewData["Title"] = "Today activities";
 }
 
-<label>Please enter today date: </label>
-<input type="month"></input>
+<form>
+  <label>Please enter today date: </label>
+  <input type="date" asp-for="date" value="@Model.date" onchange=""></input>
+  <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="Activities">Change Day</button>
+</form>
 
 <div class="text-center">
-    <h1 class="display-4">Today activities</h1>
-    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+    <h1 class="display-3">Today activities</h1>
 </div>
 
 <div>

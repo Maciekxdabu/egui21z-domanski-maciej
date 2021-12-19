@@ -46,12 +46,13 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Index(HIndexModel model)
     {
+        GDataModel.Gdate = new DateTime(2020, 11, 10);
         GDataModel.Gusername = model.username;
         username = model.username;
 
         HActivitiesModel Amodel = new HActivitiesModel();
         Amodel.entries = new List<EntryTableModel>();
-        Amodel.date = date;
+        Amodel.date = GDataModel.Gdate.ToString("yyyy-MM-dd");
         Amodel.totalTime = 0;
 
         return RedirectToAction("Activities", Amodel);
@@ -63,6 +64,11 @@ public class HomeController : Controller
 
         if (report == null)
             return View();
+
+        if (model.date == null || model.date == "")
+            model.date = GDataModel.Gdate.ToString("yyyy-MM-dd");
+        else
+            GDataModel.Gdate = DateTime.Parse(model.date);
 
         if (model.entries == null)
             model.entries = new List<EntryTableModel>();
