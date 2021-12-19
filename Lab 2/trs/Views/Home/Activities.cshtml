@@ -31,6 +31,7 @@
     <th>
       @Html.DisplayName("Description")
     </th>
+    <th></th>
   </tr>
 @for (int i=0; i<Model?.entries?.Count(); i++)
 {
@@ -46,6 +47,11 @@
     </td>
     <td>
       @Html.DisplayFor(modelItem=>Model.entries.ElementAt(i).description)
+    </td>
+    <td>
+      <a asp-controller="Home" asp-action="Activities" asp-route-id="@i">Edit</a>
+      <a asp-controller="Home" asp-action="DeleteEntry" asp-route-id="@i">Delete</a>
+      <a asp-controller="Home" asp-action="Activities" asp-route-id="@i">Details</a>
     </td>
   </tr>
 }

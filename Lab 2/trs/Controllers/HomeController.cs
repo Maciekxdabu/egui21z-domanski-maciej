@@ -88,6 +88,27 @@ public class HomeController : Controller
         return View(model);
     }
 
+    public IActionResult DeleteEntry(int id)
+    {
+        ReportModel report = ReportModel.GetReport(GDataModel.Gusername, GDataModel.Gdate);
+        for (int i=0; i<report?.entries?.Count(); i++)
+        {
+            if (report.entries[i].date != GDataModel.Gdate)
+                continue;
+            
+            id--;
+            if (id < 0)
+            {
+                report.entries.RemoveAt(i);
+                ReportModel.SaveReport(report);
+
+                break;
+            }
+        }
+
+        return RedirectToAction("Activities");
+    } 
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

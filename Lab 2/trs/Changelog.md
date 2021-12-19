@@ -1,3 +1,6 @@
+Version 0.4.2
+- Added buttons for entries for: edit, delete and details (only delete works for now)
+
 Version 0.4.1 - Finished Dates main parts
 - Fix: Submit button in Entry Dialog now also properly returns to Main Page
 - Entries are now created with proper dates
