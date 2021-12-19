@@ -21,6 +21,19 @@ public class ActivityModel
         return newList;
     }
 
+    public static ActivityModel GetActivity(string code)
+    {
+        IList<ActivityModel> aktList = GetActivityList();
+
+        for (int i=0; i<aktList.Count(); i++)
+        {
+            if (aktList[i].code == code)
+                return aktList[i];
+        }
+
+        return null;
+    }
+
     public static List<SelectListItem> GetCodesList()
     {
         IList<ActivityModel> newList = GetActivityList();

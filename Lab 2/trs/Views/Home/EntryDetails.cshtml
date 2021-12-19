@@ -1,0 +1,65 @@
+@model trs.Models.EntryDetailsModel
+@{
+    ViewData["Title"] = "Entry Details";
+}
+
+Entry Details:
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Project Code")
+        </th>
+        <th>
+            @Html.DisplayName("Date")
+        </th>
+        <th>
+            @Html.DisplayName("Time")
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.entry.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.entry.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.entry.time)
+        </td>
+    </tr>
+</table>
+
+Entry Project details:
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Project Name")
+        </th>
+        <th>
+            @Html.DisplayName("Project Code")
+        </th>
+        <th>
+            @Html.DisplayName("Manager")
+        </th>
+        <th>
+            @Html.DisplayName("Budget")
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.project.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.project.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.project.manager)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>Model.project.budget)
+        </td>
+    </tr>
+</table>
+
+
+<a class="btn btn-primary" asp-controller="Home" asp-action="Activities">Return to Main Page</a>

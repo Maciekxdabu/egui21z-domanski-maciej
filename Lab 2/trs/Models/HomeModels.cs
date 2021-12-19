@@ -11,3 +11,10 @@ public class HActivitiesModel
     public List<EntryTableModel> entries { get; set; }
     public int totalTime { get; set; }
 }
+
+public class EntryDetailsModel
+{
+    public EntryModel entry { get; set; }
+
+    public ActivityModel project { get; set; }
+}

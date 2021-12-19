@@ -109,6 +109,29 @@ public class HomeController : Controller
         return RedirectToAction("Activities");
     } 
 
+    public IActionResult EntryDetails(int id)
+    {
+        EntryDetailsModel model = new EntryDetailsModel();
+
+        ReportModel report = ReportModel.GetReport(GDataModel.Gusername, GDataModel.Gdate);
+        for (int i=0; i<report?.entries?.Count(); i++)
+        {
+            if (report.entries[i].date != GDataModel.Gdate)
+                continue;
+            
+            id--;
+            if (id < 0)
+            {
+                model.entry = report.entries[i];
+                model.project = ActivityModel.GetActivity(model.entry.code);
+
+                break;
+            }
+        }
+
+        return View(model);
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

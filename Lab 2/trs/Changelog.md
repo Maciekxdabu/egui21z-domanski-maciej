@@ -1,3 +1,6 @@
+Version 0.5.2
+- Added option to see Entry details (along with its project details)
+
 Version 0.5.1 - Made monthly report
 - Added monthly report which shows time spent in current month for all projects
 
