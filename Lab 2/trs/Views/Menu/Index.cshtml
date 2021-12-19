@@ -1,0 +1,38 @@
+@model trs.Models.MIndexModel
+@{
+    ViewData["Title"] = "Monthly Report";
+}
+
+<a class="btn btn-primary" asp-controller="Home" asp-action="Activities">Return to Main Page</a>
+
+<h1>Monthly Report</h1>
+
+Report for @Model.date month
+
+<table class="table">
+    <tr>
+        <th>
+        @Html.DisplayName("Project Name")
+        </th>
+        <th>
+        @Html.DisplayName("Code")
+        </th>
+        <th>
+        @Html.DisplayName("Time spent")
+        </th>
+    </tr>
+@for (int i=0; i<Model?.tableEntries.Count(); i++)
+{
+    <tr>
+        <th>
+        @Html.DisplayFor(modelItem=>Model.tableEntries.ElementAt(i).projectName)
+        </th>
+        <th>
+        @Html.DisplayFor(modelItem=>Model.tableEntries.ElementAt(i).projectCode)
+        </th>
+        <th>
+        @Html.DisplayFor(modelItem=>Model.tableEntries.ElementAt(i).timeSpent)
+        </th>
+    </tr>
+}
+</table>

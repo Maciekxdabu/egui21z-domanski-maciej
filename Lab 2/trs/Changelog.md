@@ -1,3 +1,6 @@
+Version 0.5.1 - Made monthly report
+- Added monthly report which shows time spent in current month for all projects
+
 Version 0.4.2
 - Added buttons for entries for: edit, delete and details (only delete works for now)
 
