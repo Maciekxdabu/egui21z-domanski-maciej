@@ -5,7 +5,7 @@
 
 <b>Please enter data for activity</b>
 
-<form method="post">
+<form method="post" id="form1">
     <div>
     <label>Project: </label>
     @Html.DropDownListFor(Model=>Model.entry.code, Model.projectCodes)
@@ -22,7 +22,9 @@
         <!--<div></div>-->
         <textarea rows="5" cols="50" placeholder="Type description if needed" value="" asp-for="entry.description" class="form-control"></textarea>
     </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
 </form>
+
+<div>
+    <button type="submit" class="btn btn-primary" form="form1">Submit</button>
+    <a class="btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Index">Cancel</a>
+</div>

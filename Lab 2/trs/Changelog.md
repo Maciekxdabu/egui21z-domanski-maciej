@@ -1,3 +1,7 @@
+Version 0.2.2
+- Added Cancel button for Entry dialog
+- Added AddEntry function and declared RemoveEntry and EditEntry for ReportModel
+
 Version 0.2.1
 - Added ReportModel with static function to get and save the data
 - commented the "Nullable" in trs.csproj in order to get rid of warnings
