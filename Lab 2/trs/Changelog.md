@@ -1,3 +1,6 @@
+Version 0.5.3
+- Disabled navigation bar
+
 Version 0.5.2
 - Added option to see Entry details (along with its project details)
 
