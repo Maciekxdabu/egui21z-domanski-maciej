@@ -12,6 +12,8 @@ public class HomeController : Controller
     [DataType(DataType.Date)]
     public static DateTime date = new DateTime(2021, 12, 19);
 
+
+
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -40,11 +42,28 @@ public class HomeController : Controller
 
         ActivityModel.SaveActivityList(newList);*/
 
-        IList<ActivityModel> aktList = ActivityModel.GetActivityList();
+        ReportModel report = ReportModel.GetReport(username, date);
 
-        System.Diagnostics.Debug.WriteLine(aktList[0].code + "\n" + aktList[1].code);
+        if (report == null)
+            return View();
 
-        return View();
+        List<EntryTableModel> entryTable = new List<EntryTableModel>();
+
+        for (int i=0; i<report.entries.Count(); i++)
+        {
+            //if (report.entries[i].date != date)
+                //continue;
+
+            EntryTableModel newEntry = new EntryTableModel();
+            newEntry.code = report.entries[i].code;
+            newEntry.projectName = ActivityModel.GetProjectName(newEntry.code);
+            newEntry.time = report.entries[i].time;
+            newEntry.date = report.entries[i].date;
+            newEntry.description = report.entries[i].description;
+            entryTable.Add(newEntry);
+        }
+
+        return View(entryTable);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

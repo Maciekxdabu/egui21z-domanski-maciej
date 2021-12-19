@@ -1,4 +1,4 @@
-﻿@model trs.Models.LectureModel
+﻿@model IEnumerable<trs.Models.EntryTableModel>
 @{
     ViewData["Title"] = "Today activities";
 }
@@ -11,6 +11,41 @@
     <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
 </div>
 
+<table class="table">
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model=>model.projectName)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model=>model.code)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model=>model.time)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model=>model.description)
+    </th>
+  </tr>
+@for (int i=0; i<Model?.Count(); i++)
+{
+  <tr>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.ElementAt(i).projectName)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.ElementAt(i).code)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.ElementAt(i).time)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.ElementAt(i).description)
+    </td>
+  </tr>
+}
+</table>
+
+<a class="btn btn-primary" asp-controller="Entry" asp-action="Index">Add Entry</a>
 
 
 <br><br><br><br><br><br><br><br><br><br><br>
@@ -23,7 +58,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    @Html.EditorFor(Model=>Model.pwd, "", new { @class = "from-control" })
+    @*Html.EditorFor(Model=>Model.pwd, "", new { @class = "from-control" })*@
     <!--<input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
   </div>
   <div class="form-check">

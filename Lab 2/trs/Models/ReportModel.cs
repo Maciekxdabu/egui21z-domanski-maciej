@@ -41,21 +41,24 @@ public class ReportModel
 
     public static void AddEntry(EntryModel newEntry, string username)
     {
-        ReportModel report = GetReport(username, newEntry.date);
+        ReportModel report = GetReport(username, trs.Controllers.HomeController.date);
 
         if (report == null)//if report does not exist for current user and date
         {
             report = new ReportModel();
-            report.date = newEntry.date;
+            report.date = trs.Controllers.HomeController.date;
             report.username = username;
+            report.entries = new List<EntryModel>();
         }
 
         report.entries.Add(newEntry);
+        SaveReport(report);
     }
 
     public static void RemoveEntry(int index)
     {
         //TO DO - implement
+        //TO DO - check if "entries" are empty and delete report file if yes
     }
 
     public static void EditEntry(int index, EntryModel newEntry)

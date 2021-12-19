@@ -39,6 +39,19 @@ public class ActivityModel
         return codeList;
     }
 
+    public static string GetProjectName(string code)
+    {
+        IList<ActivityModel> aktList = GetActivityList();
+
+        foreach (var akt in aktList)
+        {
+            if (akt.code == code)
+                return akt.name;
+        }
+
+        return "";
+    }
+
     public static void SaveActivityList(IList<ActivityModel> newList)
     {
         string jsonString = JsonSerializer.Serialize(newList);

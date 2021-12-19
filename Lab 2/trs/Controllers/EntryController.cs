@@ -20,10 +20,11 @@ namespace trs.Controllers
         public IActionResult Index(EntryViewModel model)//when receiving submitted entry
         {
             System.Diagnostics.Debug.WriteLine("code: " + model.entry.code + " time: " + model.entry.time + " description: " + model.entry.description);
-            model.projectCodes = ActivityModel.GetCodesList();
+            //model.projectCodes = ActivityModel.GetCodesList();
 
-            //TO DO - Redirect
-            return View(model);
+            ReportModel.AddEntry(model.entry, HomeController.username);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

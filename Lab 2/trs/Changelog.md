@@ -1,8 +1,12 @@
+Version 0.3.1 - Entry Dialog completed
+- Now prints entries table on the main page
+- Now it can successfully add entries to the current report (but date still needs fixing)
+
 Version 0.2.2
 - Added Cancel button for Entry dialog
 - Added AddEntry function and declared RemoveEntry and EditEntry for ReportModel
 
-Version 0.2.1
+Version 0.2.1 - start of working on the Entry Dialog
 - Added ReportModel with static function to get and save the data
 - commented the "Nullable" in trs.csproj in order to get rid of warnings
 - EntryController now has two Index methods, one marked with \[HttpPost\] attribute in order to receive and analyze the given data
