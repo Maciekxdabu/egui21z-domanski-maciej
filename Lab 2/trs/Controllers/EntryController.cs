@@ -19,12 +19,10 @@ namespace trs.Controllers
         [HttpPost]
         public IActionResult Index(EntryViewModel model)//when receiving submitted entry
         {
-            System.Diagnostics.Debug.WriteLine("code: " + model.entry.code + " time: " + model.entry.time + " description: " + model.entry.description);
-            //model.projectCodes = ActivityModel.GetCodesList();
+            model.entry.date = GDataModel.Gdate;
+            ReportModel.AddEntry(model.entry);
 
-            ReportModel.AddEntry(model.entry, HomeController.username);
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Activities", "Home");
         }
     }
 }

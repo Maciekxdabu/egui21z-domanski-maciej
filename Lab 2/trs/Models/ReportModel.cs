@@ -10,7 +10,7 @@ public class ReportModel
     public List<EntryModel> entries { get; set; }
     [JsonIgnore]
     [DataType(DataType.Date)]
-    public DateTime date { get; set; }
+    public DateTime Rdate { get; set; }
     [JsonIgnore]
     public string username { get; set; }
 
@@ -25,7 +25,7 @@ public class ReportModel
 
         string jsonString = File.ReadAllText(filename);
         ReportModel report = JsonSerializer.Deserialize<ReportModel>(jsonString);
-        report.date = date;
+        report.Rdate = date;
         report.username = username;
 
         return report;
@@ -33,21 +33,22 @@ public class ReportModel
 
     public static void SaveReport(ReportModel report)
     {
-        string filename = "Data/" + report.username + "-" + report.date.Year + "-" + report.date.Month + ".json";
+        string filename = "Data/" + report.username + "-" + report.Rdate.Year + "-" + report.Rdate.Month + ".json";
 
         string jsonString = JsonSerializer.Serialize(report);
         File.WriteAllText(filename, jsonString);
     }
 
-    public static void AddEntry(EntryModel newEntry, string username)
+    public static void AddEntry(EntryModel newEntry)
     {
-        ReportModel report = GetReport(username, trs.Controllers.HomeController.date);
+        ReportModel report = GetReport(GDataModel.Gusername, GDataModel.Gdate);
 
         if (report == null)//if report does not exist for current user and date
         {
             report = new ReportModel();
-            report.date = trs.Controllers.HomeController.date;
-            report.username = username;
+            
+            report.Rdate = GDataModel.Gdate;
+            report.username = GDataModel.Gusername;
             report.entries = new List<EntryModel>();
         }
 

@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace trs.Models;
 
 public class HIndexModel

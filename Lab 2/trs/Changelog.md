@@ -1,3 +1,8 @@
+Version 0.4.1 - Finished Dates main parts
+- Fix: Submit button in Entry Dialog now also properly returns to Main Page
+- Entries are now created with proper dates
+- Now only entires from current day show up on main page
+
 Version 0.3.3
 - Fix: Cancel button in Entry Dialog now properly returns to Main Page
 - Finished input for selecting date

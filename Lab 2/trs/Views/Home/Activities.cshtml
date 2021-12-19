@@ -5,7 +5,7 @@
 
 <form>
   <label>Please enter today date: </label>
-  <input type="date" asp-for="date" value="@Model.date" onchange=""></input>
+  <input type="date" asp-for="date" value="@Model?.date"></input>
   <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="Activities">Change Day</button>
 </form>
 
@@ -14,7 +14,7 @@
 </div>
 
 <div>
-  Total time spent on activities today: @Model.totalTime
+  Total time spent on activities today: @Model?.totalTime
 </div>
 
 <table class="table">
