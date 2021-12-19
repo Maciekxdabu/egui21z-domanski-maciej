@@ -1,11 +1,17 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using trs.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace trs.Controllers;
 
 public class HomeController : Controller
 {
+    //DEBUG ONLY
+    public static string username = "jan";
+    [DataType(DataType.Date)]
+    public static DateTime date = new DateTime(2021, 12, 19);
+
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)

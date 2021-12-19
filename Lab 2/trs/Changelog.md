@@ -1,3 +1,8 @@
+Version 0.2.1
+- Added ReportModel with static function to get and save the data
+- commented the "Nullable" in trs.csproj in order to get rid of warnings
+- EntryController now has two Index methods, one marked with \[HttpPost\] attribute in order to receive and analyze the given data
+
 Version 0.1.4
 - Updated Entry View so it now displays approporiate project names (approporiate project code is sent when submitted)
 

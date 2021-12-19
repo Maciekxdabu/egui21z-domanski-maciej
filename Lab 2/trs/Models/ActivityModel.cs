@@ -6,10 +6,12 @@ namespace trs.Models;
 
 public class ActivityModel
 {
-    public string? code { get; set; }
-    public string? manager { get; set; }
-    public string? name { get; set; }
-    public int? budget { get; set; }
+    public string code { get; set; }
+    public string manager { get; set; }
+    public string name { get; set; }
+    public int budget { get; set; }
+
+    // ---------- public static methods
 
     public static IList<ActivityModel> GetActivityList()
     {

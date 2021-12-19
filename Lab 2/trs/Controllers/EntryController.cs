@@ -16,11 +16,13 @@ namespace trs.Controllers
             return View(newModel);
         }
 
-        public IActionResult Submit(EntryViewModel model)
+        [HttpPost]
+        public IActionResult Index(EntryViewModel model)
         {
             System.Diagnostics.Debug.WriteLine("code: " + model.entry.code + " time: " + model.entry.time + " description: " + model.entry.description);
+            model.projectCodes = ActivityModel.GetCodesList();
 
-            return View("Index", model);
+            return View(model);
         }
     }
 }
