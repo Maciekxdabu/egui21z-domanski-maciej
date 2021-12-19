@@ -1,0 +1,52 @@
+﻿@model trs.Models.HActivitiesModel
+@{
+    ViewData["Title"] = "Today activities";
+}
+
+<label>Please enter today date: </label>
+<input type="month"></input>
+
+<div class="text-center">
+    <h1 class="display-4">Today activities</h1>
+    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+</div>
+
+<div>
+  Total time spent on activities today: @Model.totalTime
+</div>
+
+<table class="table">
+  <tr>
+    <th>
+      @Html.DisplayName("Project Name")
+    </th>
+    <th>
+      @Html.DisplayName("Code")
+    </th>
+    <th>
+      @Html.DisplayName("Time")
+    </th>
+    <th>
+      @Html.DisplayName("Description")
+    </th>
+  </tr>
+@for (int i=0; i<Model?.entries?.Count(); i++)
+{
+  <tr>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.entries.ElementAt(i).projectName)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.entries.ElementAt(i).code)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.entries.ElementAt(i).time)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem=>Model.entries.ElementAt(i).description)
+    </td>
+  </tr>
+}
+</table>
+
+<a class="btn btn-primary" asp-controller="Entry" asp-action="Index">Add Entry</a>

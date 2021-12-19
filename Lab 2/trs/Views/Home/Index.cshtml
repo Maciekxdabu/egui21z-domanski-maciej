@@ -1,71 +1,15 @@
-﻿@model IEnumerable<trs.Models.EntryTableModel>
+@model trs.Models.HIndexModel
 @{
-    ViewData["Title"] = "Today activities";
+    ViewData["Title"] = "Login";
 }
 
-<label>Please enter today date: </label>
-<input type="month"></input>
 
-<div class="text-center">
-    <h1 class="display-4">Today activities</h1>
-    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
-</div>
+<h1>Welcome to Time Report System application</h1>
 
-<table class="table">
-  <tr>
-    <th>
-      @Html.DisplayNameFor(model=>model.projectName)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model=>model.code)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model=>model.time)
-    </th>
-    <th>
-      @Html.DisplayNameFor(model=>model.description)
-    </th>
-  </tr>
-@for (int i=0; i<Model?.Count(); i++)
-{
-  <tr>
-    <td>
-      @Html.DisplayFor(modelItem=>Model.ElementAt(i).projectName)
-    </td>
-    <td>
-      @Html.DisplayFor(modelItem=>Model.ElementAt(i).code)
-    </td>
-    <td>
-      @Html.DisplayFor(modelItem=>Model.ElementAt(i).time)
-    </td>
-    <td>
-      @Html.DisplayFor(modelItem=>Model.ElementAt(i).description)
-    </td>
-  </tr>
-}
-</table>
-
-<a class="btn btn-primary" asp-controller="Entry" asp-action="Index">Add Entry</a>
-
-
-<br><br><br><br><br><br><br><br><br><br><br>
-<div>
-<form>
+<form method="post">
+  Please enter your username:
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    @*Html.EditorFor(Model=>Model.pwd, "", new { @class = "from-control" })*@
-    <!--<input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <input type="text" class="form-control" placeholder="Enter login" asp-for="username" value="jan">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-</div>

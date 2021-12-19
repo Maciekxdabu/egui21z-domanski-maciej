@@ -1,3 +1,9 @@
+Version 0.3.2
+- Deleted LectureModel created in Lecture MVC tutorial
+- Changed Home/Index to be login View and moved Activities table to Home/Activities
+- Created HActivitiesModel to display data on main page
+- made a GDataModel for storing current username and date
+
 Version 0.3.1 - Entry Dialog completed
 - Now prints entries table on the main page
 - Now it can successfully add entries to the current report (but date still needs fixing)

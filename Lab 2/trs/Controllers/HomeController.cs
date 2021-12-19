@@ -21,10 +21,8 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index(LectureModel person)
+    public IActionResult Index()
     {
-        //TO DO - check if first entry and if YES: ask for login
-        
         /*IList<ActivityModel> newList = new List<ActivityModel>();
 
         ActivityModel newAct = new ActivityModel();
@@ -42,12 +40,32 @@ public class HomeController : Controller
 
         ActivityModel.SaveActivityList(newList);*/
 
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Index(HIndexModel model)
+    {
+        GDataModel.Gusername = model.username;
+        username = model.username;
+
+        HActivitiesModel Amodel = new HActivitiesModel();
+        Amodel.entries = new List<EntryTableModel>();
+        Amodel.date = date;
+        Amodel.totalTime = 0;
+
+        return RedirectToAction("Activities", Amodel);
+    }
+
+    public IActionResult Activities(HActivitiesModel model)
+    {
         ReportModel report = ReportModel.GetReport(username, date);
 
         if (report == null)
             return View();
 
-        List<EntryTableModel> entryTable = new List<EntryTableModel>();
+        if (model.entries == null)
+            model.entries = new List<EntryTableModel>();
 
         for (int i=0; i<report.entries.Count(); i++)
         {
@@ -60,10 +78,10 @@ public class HomeController : Controller
             newEntry.time = report.entries[i].time;
             newEntry.date = report.entries[i].date;
             newEntry.description = report.entries[i].description;
-            entryTable.Add(newEntry);
+            model.entries.Add(newEntry);
         }
 
-        return View(entryTable);
+        return View(model);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
