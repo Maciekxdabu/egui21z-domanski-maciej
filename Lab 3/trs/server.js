@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const data =
 {
@@ -18,8 +19,14 @@ const data =
         }
     ]
 }
-app.get('/heya', (req, res) => res.json(data))
+app.get('/api/projList', (req, res) => {
+    fileName = 'jsons/activity.json';
+    ReadFile(fileName, res);
+})
+//app.get('/api/projList', (req, res) => res.json(data))
 app.listen(5000)
+
+
 
 function ReadFile(path, res) { // read file from given path and send the contents in res
     fs.readFile(path, (err, out2) => {
