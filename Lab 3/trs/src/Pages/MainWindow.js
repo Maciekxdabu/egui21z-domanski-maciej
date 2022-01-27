@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function MainWindow(props) {
     const [entryList, setEntryList] = useState({ entries: [] });
+    const [timeSum, setTimeSum] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,6 +17,13 @@ function MainWindow(props) {
                 }
             }
             const result = await axios(config);
+
+            var sum = 0;
+            for (var i = 0; i<result.data.entries.length; i++)
+            {
+                sum += result.data.entries[i].time;
+            }
+            setTimeSum(sum);
 
             console.log(result.data);
             setEntryList(result.data)
@@ -38,6 +47,8 @@ function MainWindow(props) {
                     <th>
                         Description
                     </th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 {entryList.entries.map(item => (
                 <tr>
@@ -50,9 +61,22 @@ function MainWindow(props) {
                     <td>
                         {item.description}
                     </td>
+                    <td>
+                        <Link to='/entrydialog'>
+                            <button type="button">
+                                Edit
+                            </button>
+                        </Link>
+                        <button type="button">
+                            Delete
+                        </button>
+                    </td>
                 </tr>
                 ))}
             </table>
+            <h4>
+                Time spent on activities today: {timeSum}
+            </h4>
         </div>
     );
 };
